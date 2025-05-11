@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    body {
+      background: url('https://files.catbox.moe/9xtvn6.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .container {
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(25px);
+      border-radius: 28px;
+      padding: 60px 50px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px auto;
+      border: 3px solid #ffffff22;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      font-size: 2.6em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .desc {
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #2e2e2e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95em;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .link-btn:hover {
+      background: #1f1f1f;
+      transform: scale(1.03);
+    }
+
+    .link-btn img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="profile-pic" src="https://files.catbox.moe/oj7ygt.png" alt="Profile Picture">
+    <div class="logo">Byter Exploits</div>
+    <div class="desc">
+      Welcome to Byter — your customizable tool hub.<br />
+     hello,byter is a small roblox exploit group that makes scripts for roblox executors.
+    </div>
+    <div class="button-group">
+      <a class="link-btn" href="https://discord.gg/WbpceV4Qgj" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Icon">
+        Join Discord
+      </a>
+      <a class="link-btn" href="https://guns.lol/chez.byter" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Profile Icon">
+        Owner's Profile
+      </a>
+    </div>
+  </div>
+</body>
+</html>
