@@ -18,123 +18,275 @@
   <meta name="twitter:description" content="The official site of Byter Exploits." />
   <meta name="twitter:image" content="https://files.catbox.moe/oj7ygt.png" />
 
-  <!-- Styles & Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: rgba(15, 15, 15, 0.85);
+      --blur: blur(16px);
+      --primary: #df2b2b;
+      --text: #f5f5f5;
+      --muted: #888;
+      --card: rgba(30, 30, 30, 0.7);
+      --radius: 12px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Rubik', sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: url('https://files.catbox.moe/9xtvn6.jpg') no-repeat center center fixed;
-      background-size: cover;
-      height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: var(--bg);
+      backdrop-filter: var(--blur);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      color: white;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
     }
 
-    .container {
-      background: rgba(10, 10, 10, 0.6);
-      backdrop-filter: blur(25px);
-      border-radius: 28px;
-      padding: 40px 50px;
-      max-width: 700px;
-      width: 90%;
-      display: flex;            /* Flex row layout */
-      align-items: center;      /* Vertically center */
-      gap: 30px;                /* Space between image and text */
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .profile-pic {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #ffffff22;
-      object-fit: cover;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-      flex-shrink: 0;           /* Prevent shrinking */
-    }
-
-    .text-content {
-      flex-grow: 1;             /* Text takes remaining width */
-      color: white;
-    }
-
-    .logo {
-      font-size: 2.6em;
+    .logo h1 {
       font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 1.5rem;
     }
 
-    .desc {
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      opacity: 0.9;
-      line-height: 1.6;
+    .logo span {
+      color: var(--primary);
     }
 
-    .button-group {
+    nav {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 1.5rem;
     }
 
-    .link-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    nav a {
       text-decoration: none;
-      background: #2e2e2e;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #df2b2b, #b00000);
       color: white;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 0.95em;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .link-btn:hover {
-      background: #1f1f1f;
-      transform: scale(1.03);
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    .link-btn img {
-      width: 20px;
-      height: 20px;
+    .section {
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      padding: 2rem;
+      border-radius: var(--radius);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(223, 43, 43, 0.3);
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(20, 20, 20, 0.9);
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 767px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--bg);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: var(--radius);
+      }
+
+      .nav-open nav {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+    }
+
+    .hamburger {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img
-      class="profile-pic"
-      src="https://files.catbox.moe/oj7ygt.png"
-      alt="Profile Picture"
-    />
-    <div class="text-content">
-      <div class="logo">Byter Exploits</div>
-      <div class="desc">
-        hello, Byter is a small Roblox exploit group run by chez, we make exploits and scripts for roblox executors.
+
+  <header>
+    <div class="logo"><h1><span>Byter</span></h1></div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#about">About</a>
+      <a href="#credits">Credits</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <h1>Powerful & Safe Roblox Tools</h1>
+    <p>Download stable and patched executors from trusted Byter sources.</p>
+    <button class="btn" onclick="window.open('https://discord.gg/YOUR_INVITE', '_blank')">Join Discord</button>
+  </section>
+
+  <section class="section glass" id="downloads">
+    <h2>Downloads</h2>
+    <p>Choose a build below to start using tools instantly.</p>
+    <div class="cards">
+      <div class="card glass">
+        <h3>ByterHub</h3>
+        <p>Universal script hub with ESP, aimbot, and more.</p>
+        <button class="btn" onclick="window.open('https://scriptblox.com/script/Universal-Script-Byterhub-38974', '_blank')">Download</button>
       </div>
-      <div class="button-group">
-        <a class="link-btn" href="https://discord.gg/WbpceV4Qgj" target="_blank">
-          <img src="https://files.catbox.moe/gnpy3a.png" alt="Discord Icon" />
-          Join Discord
-        </a>
-        <a class="link-btn" href="https://guns.lol/che3z" target="_blank">
-          <img src="https://files.catbox.moe/rc6v2g.png" alt="Profile Icon" />
-          Owner's Profile
-        </a>
+      <div class="card glass">
+        <h3>ByterPass</h3>
+        <p>Font bypass and encoding utility for Roblox GUIs.</p>
+        <button class="btn" onclick="window.open('https://scriptblox.com/script/Universal-Script-Byterpass-37683', '_blank')">Download</button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>Why Byter?</h2>
+    <p>We provide fast, updated, and undetected tools built with community safety in mind.</p>
+  </section>
+
+  <section class="section glass" id="credits">
+    <h2>Credits</h2>
+    <p>Thanks to the contributors that help make this possible.</p>
+    <div class="cards">
+      <div class="card glass">
+        <h3>Chez</h3>
+        <p>Everything: UI, logic, and backend tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Byter. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function toggleMenu() {
+      document.querySelector("header").classList.toggle("nav-open");
+    }
+
+    const cards = document.querySelectorAll(".card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.animation = "fadeIn 1s ease forwards";
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      card.style.opacity = "0";
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
