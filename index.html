@@ -161,6 +161,7 @@
     .section p {
       color: var(--muted);
       margin-bottom: 3rem;
+      white-space: pre-line;
     }
 
     .cards {
@@ -241,9 +242,81 @@
     .hamburger {
       display: none;
     }
+
+    /* TOS Modal Styles */
+    #tos-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #tos-modal {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      max-width: 500px;
+      color: var(--text);
+      box-shadow: 0 0 30px rgba(223, 43, 43, 0.8);
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.5;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    #tos-modal h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    #tos-modal p {
+      margin-bottom: 1rem;
+    }
+
+    #tos-modal button {
+      display: block;
+      margin: 1.5rem auto 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    #tos-modal button:hover {
+      background: #b02222;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Terms of Service Modal -->
+  <div id="tos-overlay" style="display:none;">
+    <div id="tos-modal" class="glass" role="dialog" aria-modal="true" aria-labelledby="tos-title">
+      <h2 id="tos-title">Terms of Service</h2>
+      <p>Welcome to Byter Exploits. By using our site and tools, you agree to the following:</p>
+      <ul>
+        <li>You will not use our exploits to harm others or break any laws.</li>
+        <li>Our exploits are provided "as-is" without warranty.</li>
+        <li>You acknowledge that all exploits run in controlled environments and respect Roblox's terms.</li>
+        <li>We are not responsible for any misuse or damage caused.</li>
+        <li>By continuing, you accept these terms.</li>
+      </ul>
+      <button id="accept-tos">Accept Terms</button>
+    </div>
+  </div>
 
   <header>
     <div class="logo">
@@ -287,19 +360,20 @@
     <h2>Tools</h2>
     <p>Useful downloads for exploiting and beyond.</p>
     <div class="cards">
-<div class="card glass">
-  <h3>Nuker-V2</h3>
-  <p>discord server nuker with customizable channel and server names.</p>
-  <button class="btn" onclick="window.open('https://github.com/snigglaberry/Nuker-V2/raw/main/Nuker-v2%20OPTIMIZED.7z', '_blank')">Download</button>
-  <br /><br />
-  <button class="btn" onclick="window.location.href='docs.html'">View Documentation</button>
-</div>
+      <div class="card glass">
+        <h3>Nuker-V2</h3>
+        <p>discord server nuker with customizable channel and server names.</p>
+        <button class="btn" onclick="window.open('https://github.com/snigglaberry/Nuker-V2/raw/main/Nuker-v2%20OPTIMIZED.7z', '_blank')">Download</button>
+        <br /><br />
+        <button class="btn" onclick="window.location.href='docs.html'">View Documentation</button>
+      </div>
     </div>
   </section>
 
   <section class="section" id="about">
     <h2>Why Byter?</h2>
-    <p>We make Roblox exploits for executors and ensure they work before publishing — with the exploiting community in mind.\nwe also make tools for other thinsg,for example Nuker-V2 for discord.</p>
+    <p>We make Roblox exploits for executors and ensure they work before publishing — with the exploiting community in mind.
+we also make tools for other thinsg,for example Nuker-V2 for discord.</p>
   </section>
 
   <section class="section glass" id="credits">
@@ -322,11 +396,15 @@
   </footer>
 
   <script>
+    // Year update
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Toggle hamburger menu on mobile
     function toggleMenu() {
       document.querySelector("header").classList.toggle("nav-open");
     }
 
+    // Card fade in on scroll
     const cards = document.querySelectorAll(".card");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -338,7 +416,23 @@
       card.style.opacity = "0";
       observer.observe(card);
     });
+
+    // Terms of Service popup logic
+    const tosOverlay = document.getElementById('tos-overlay');
+    const acceptBtn = document.getElementById('accept-tos');
+
+    // Check if user accepted TOS previously
+    if (!localStorage.getItem('byter-tos-accepted')) {
+      tosOverlay.style.display = 'flex';
+      // Prevent scrolling behind modal
+      document.body.style.overflow = 'hidden';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('byter-tos-accepted', 'true');
+      tosOverlay.style.display = 'none';
+      document.body.style.overflow = '';
+    });
   </script>
 </body>
 </html>
-
